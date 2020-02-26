@@ -1,6 +1,6 @@
-public interface modificarAlumno {
+public interface ModificarAlumno {
   int getCalificacion();
   String getNombre();
-  void setCalificacion();
-  void setNombre();
+  void setCalificacion(int calificacion);
+  void setNombre(String nombre);
 }

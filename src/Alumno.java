@@ -3,8 +3,11 @@ class Alumno implements ModificarAlumno {
   private String nombre;
   private float promedio;
 
-  float calcularPromedio(int suma, int n) {
+  void calcularPromedio(int suma, int n) {
     promedio=suma/n;
+  }
+  public float getPromedio(){
+    return promedio;
   }
   public int getCalificacion(){
     return calificacion;
@@ -17,6 +20,11 @@ class Alumno implements ModificarAlumno {
   }
   public void setNombre(String nom){
     this.nombre=nom;
+  }
+  public Alumno (String nom){
+    nombre=nom;
+  }
+  public Alumno (){
   }
 
 }
