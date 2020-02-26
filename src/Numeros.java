@@ -1,5 +1,5 @@
 class Numeros {
-    protected int n1,n2;
+    protected int n1,n2,p,i,pos,neg;
     protected float num1, num2;
     public int suma(int n1, int n2){
         return n1+n2;
@@ -15,9 +15,11 @@ class Numeros {
     }
     public void validarPosNeg(int n, int pos, int neg){
         if (n>=0){
-            pos+=1;
+            pos=pos+1;
+            setPos(pos);
         } else {
-            neg+=1;
+            neg=neg+1;
+            setNeg(neg);
         }
     }
     public int validarRango(int n, int rangoInferior, int rangoSuperior){
@@ -34,12 +36,20 @@ class Numeros {
             return 0;
         }
     }
-    public void validarParesImpares(int n,int p,int i){
+    public void validarParesImpares(int n,int pares,int impares){
         if (n%2==0){
-            p+=1;
+            p=pares+1;
+            setP(p);
         } else {
-            i+=1;
+            i=impares+1;
+            setI(i);
         }
+    }
+    public int getP() {
+        return p;
+    }
+    public int getI() {
+        return i;
     }
     public void setN1(int n){
         this.n1=n;
@@ -64,5 +74,23 @@ class Numeros {
     }
     public float getNum1() {
         return num1;
+    }
+    public int getPos() {
+        return pos;
+    }
+    public int getNeg() {
+        return neg;
+    }
+    public void setP(int p) {
+        this.p = p;
+    }
+    public void setNeg(int neg) {
+        this.neg = neg;
+    }
+    public void setI(int i) {
+        this.i = i;
+    }
+    public void setPos(int pos) {
+        this.pos = pos;
     }
 }
