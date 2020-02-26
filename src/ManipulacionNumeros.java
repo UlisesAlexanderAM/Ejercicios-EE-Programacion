@@ -39,26 +39,47 @@ public class ManipulacionNumeros extends Numeros {
                         int multiplicacion= nums.multiplicacion(num1,num2);
                         c.printf("La multiplicaion de %d x %d es: %d",num1,num2,multiplicacion);
                     }else {
-                        fnum1=Float.parseFloat(c.readLine("Ingrese el primer numero: "));
+                        nums.setNum1(Float.parseFloat(c.readLine("Ingrese el primer numero: ")));
+                        float fnum1=nums.getNum1();
+                        float fnum2;
                         do {
-                            fnum2=Float.parseFloat(c.readLine("Ingrese el segundo numero: "));
+                            nums.setNum2(Float.parseFloat(c.readLine("Ingrese el segundo numero: ")));
+                            fnum2=nums.getNum2();
                             if (fnum2==0){
                                 c.printf("Valor invalido, division entre 0");
                             }
                         }while (fnum2==0);
                         float division= nums.division(fnum1,fnum2);
-                        c.printf("La division de %d / %d es: %d",fnum1,fnum2,division);
+                        c.printf("La division de %f / %f es: %f",fnum1,fnum2,division);
                     }
                 }while (opcion<1 || opcion>4);
             }else if (opcion==2){
+                int pos=0,neg=0;
                 for (int i = 0; i <= 5; i++) {
-                    int pos,neg;
                     num1=Integer.parseInt(c.readLine("Escribe el numero #%d",i));
+                    nums.validarPosNeg(num1,pos,neg);
                 }
+                c.printf("Positivos: %d, Negativos: %d",pos,neg);
             }else if (opcion==3){
-
+                int rango10=0,rango100=0,rangoMayor100=0;
+                for (int i = 0; i <= 10; i++) {
+                    do {
+                        num1=Integer.parseInt(c.readLine("Escribe un numero: "));
+                    }while (num1<=0);
+                    rango10+=nums.validarRango(num1,1,10);
+                    rango100+=nums.validarRango(num1,11,100);
+                    rangoMayor100+=nums.validarRango(num1,101);
+                }
+                c.printf("Numeros entre 1-10: %dnNumeros entre 11-100: %dnNumeros mayores a 100:",rango10,rango100,rangoMayor100);
             }else {
-
+                int pares=0,impares=0;
+                for (int i = 0; i <= 5; i++) {
+                    do {
+                        num1=Integer.parseInt(c.readLine("Escribe un numero: "));
+                    }while (num1<=0);
+                    nums.validarParesImpares(num1,pares,impares);
+                }
+                c.printf("Pares: %d, Impares: %d",pares,impares);
             }
         }while (opcion<1 || opcion>4);
     }

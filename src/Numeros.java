@@ -1,5 +1,5 @@
 class Numeros {
-    protected int n1,n2, contador;
+    protected int n1,n2;
     protected float num1, num2;
     public int suma(int n1, int n2){
         return n1+n2;
@@ -27,18 +27,18 @@ class Numeros {
             return 0;
         }
     }
-    public int validarPares(int n){
-        if (n%2==0){
+    public int validarRango(int n, int rangoInferior){
+        if (n>=rangoInferior){
             return 1;
         } else {
             return 0;
         }
     }
-    public int validarImpares(int n){
-        if (n%2!=0){
-            return 1;
+    public void validarParesImpares(int n,int p,int i){
+        if (n%2==0){
+            p+=1;
         } else {
-            return 0;
+            i+=1;
         }
     }
     public void setN1(int n){
