@@ -1,3 +1,5 @@
+package Ejercicios;
+
 class Numeros {
     protected int n1,n2,p,i,pos,neg;
     protected float num1, num2;

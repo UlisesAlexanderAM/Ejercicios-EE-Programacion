@@ -1,3 +1,5 @@
+package Ejercicios;
+
 import java.io.Console;
 
 public class ManipulacionNumeros extends Numeros {

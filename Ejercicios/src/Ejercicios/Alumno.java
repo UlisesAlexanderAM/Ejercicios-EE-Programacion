@@ -1,11 +1,12 @@
+package Ejercicios;
+
 class Alumno {
   @SuppressWarnings("CanBeFinal")
   private String nombre;
   private float promedio;
 
   public void calcularPromedio(int suma, int n) {
-    //noinspection IntegerDivisionInFloatingPointContext
-    promedio=suma/n;
+    promedio= (float) suma / (float) n;
   }
   public float getPromedio(){
     return promedio;
