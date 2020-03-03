@@ -1,7 +1,6 @@
 package Ejercicios;
 
 class Alumno {
-  @SuppressWarnings("CanBeFinal")
   private String nombre;
   private float promedio;
 
