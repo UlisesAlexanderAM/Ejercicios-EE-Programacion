@@ -18,9 +18,9 @@ class Alumno {
     return nombre;
   }
 
-  public static void Desempenio(float promedio) {
+  public void Desempenio(float promedio) {
     if (promedio >= 9.5 && promedio <= 10) {
-      //c.printf("%s: Excelente%n", alumno.getNombre());
+      Imprimir.Imprimir("%s: Excelente%n", Alumno.getNombre());
     } else if (promedio >= 8.4 && promedio <= 9.4) {
       //c.printf("%s: Muy bien%n", alumno.getNombre());
     } else if (promedio >= 7.5 && promedio <= 8.4) {
