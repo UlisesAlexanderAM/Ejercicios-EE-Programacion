@@ -1,7 +1,7 @@
 package Ejercicios;
 
 class Alumno {
-  private String nombre;
+  private static String nombre;
   private float promedio;
 
   public void calcularPromedio(int suma, int n) {
@@ -14,7 +14,7 @@ class Alumno {
     nombre=nom;
   }
 
-  public String getNombre() {
+  public static String getNombre() {
     return nombre;
   }
 
