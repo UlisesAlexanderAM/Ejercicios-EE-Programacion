@@ -1,10 +1,10 @@
-package Arregl3Dimensiones;
+package Arreglo3Dimensiones;
 
 import CtaBancaria.CCuenta;
 import Ejercicios.Imprimir;
 import Ejercicios.Leer;
 
-import static Arregl3Dimensiones.Arreglo3D.*;
+import static Arreglo3Dimensiones.Arreglo3D.*;
 
 public class PrincipalA3D {
     public static void main(String[] args) {

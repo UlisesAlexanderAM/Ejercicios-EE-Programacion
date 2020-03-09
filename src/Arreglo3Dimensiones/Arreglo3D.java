@@ -1,4 +1,4 @@
-package Arregl3Dimensiones;
+package Arreglo3Dimensiones;
 
 public class Arreglo3D {
     static String[] meses = new String[]{"Enero", "Febrero"};
