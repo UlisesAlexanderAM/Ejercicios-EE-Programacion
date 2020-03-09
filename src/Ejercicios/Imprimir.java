@@ -4,11 +4,12 @@ import java.io.Console;
 
 public class Imprimir {
     static Console c = System.console();
-    public static void Imprimir(String mensaje){
+    public static void Imprimir(String mensaje,Object... args){
         if (c==null){
-            System.out.println(mensaje);
+            System.out.printf(mensaje,args);
         } else {
-            c.printf(mensaje);
+            c.printf(mensaje,args);
+
         }
     }
 }

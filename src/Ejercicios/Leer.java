@@ -44,36 +44,53 @@ public class Leer {
             return Float.NaN;
         }
     }
+    public static double datoDouble ()
+    {
+        try
+        {
+            return Double.parseDouble(dato());
+        }
+        catch (Exception e)
+        {
+            return Double.NaN;
+        }
+    }
 
     public static String datoString ()
     {
         return(dato());
     }
-    public static int leerEntero(String mensaje, int variable){
+    public static int leerEntero(String mensaje,Object... args){
         if (c==null) {
-            System.out.println(mensaje);
-            variable=datoInt();
+            System.out.printf(mensaje,args);
+            return datoInt();
         } else {
-            variable = parseInt(c.readLine(mensaje));
+            return parseInt(c.readLine(mensaje,args));
         }
-        return variable;
     }
-    public static float leerFlotante(String mensaje, float variable){
+    public static float leerFlotante(String mensaje,Object... args){
         if (c==null) {
-            System.out.println(mensaje);
-            variable=datoFloat();
+            System.out.printf(mensaje,args);
+            return datoFloat();
         } else {
-            variable = parseFloat(c.readLine(mensaje));
+            return parseFloat(c.readLine(mensaje,args));
         }
-        return variable;
     }
-    public static String leerCadena(String mensaje, String variable){
+    public static String leerCadena(String mensaje,Object... args){
         if (c==null) {
-            System.out.println(mensaje);
-            variable=datoString();
+            System.out.printf(mensaje,args);
+            return datoString();
         } else {
-            variable = c.readLine(mensaje);
+            return c.readLine(mensaje,args);
         }
-        return variable;
+    }
+    public static double leerDouble(String mensaje,Object... args){
+        if (c==null) {
+            System.out.printf(mensaje,args);
+            double variable=datoDouble();
+            return variable;
+        } else {
+            return Double.parseDouble(c.readLine(mensaje,args));
+        }
     }
 }
