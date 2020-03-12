@@ -8,7 +8,7 @@ public class CCuenta
   private double saldo;
   private double tipoDeInteres;
   
-  // M�todos constructores
+  // Metodos constructores
 public CCuenta() {
     System.out.println("Bienvenido!!!!");
 }
