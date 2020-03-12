@@ -1,32 +1,21 @@
 package Ejercicios;
 
 import java.io.*;
+import java.util.Scanner;
 
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 
 public class Leer {
     static Console c = System.console();
-    public static String dato ()
-    {
-        String x = "";
-        try
-        {
-            InputStreamReader isr = new InputStreamReader (System.in);
-            BufferedReader in = new BufferedReader (isr);
-            x = in.readLine ();
-        }
-        catch (IOException e)
-        {
-            System.err.print ("Error: " + e.getMessage ());
-        }
-        return x;
-    }
+    static InputStreamReader isr = new InputStreamReader (System.in);
+    static BufferedReader br = new BufferedReader (isr);
+    static Scanner in =new Scanner(br);
     public static int datoInt ()
     {
         try
         {
-            return Integer.parseInt (dato ());
+            return in.nextInt();
         }
         catch (NumberFormatException e)
         {
@@ -37,7 +26,7 @@ public class Leer {
     {
         try
         {
-            return parseFloat(dato());
+            return in.nextFloat();
         }
         catch (Exception e)
         {
@@ -48,7 +37,7 @@ public class Leer {
     {
         try
         {
-            return Double.parseDouble(dato());
+            return in.nextDouble();
         }
         catch (Exception e)
         {
@@ -58,7 +47,7 @@ public class Leer {
 
     public static String datoString ()
     {
-        return(dato());
+        return in.next();
     }
     public static int leerEntero(String mensaje,Object... args){
         if (c==null) {
@@ -87,10 +76,29 @@ public class Leer {
     public static double leerDouble(String mensaje,Object... args){
         if (c==null) {
             System.out.printf(mensaje,args);
-            double variable=datoDouble();
-            return variable;
+            return datoDouble();
         } else {
             return Double.parseDouble(c.readLine(mensaje,args));
         }
+    }
+    public static int[] leerListaNumerosEnteros(String mensaje,Object... args){
+        int[] arreglo = {0};
+        int i=0;
+        System.out.printf(mensaje,args);
+        while (in.nextInt()!=0){
+            arreglo[i]=in.nextInt();
+            i++;
+        }
+        return arreglo;
+    }
+    public static int[] leerListaNumerosEnterosPositivos(String mensaje,Object... args){
+        int[] arreglo = {0};
+        int i=0;
+        System.out.printf(mensaje,args);
+        while (in.nextInt()!=0 && in.nextInt()>0){
+            arreglo[i]=in.nextInt();
+            i++;
+        }
+        return arreglo;
     }
 }
