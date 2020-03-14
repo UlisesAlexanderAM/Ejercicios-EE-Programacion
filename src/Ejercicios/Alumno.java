@@ -1,5 +1,7 @@
 package Ejercicios;
 
+import static Ejercicios.Imprimir.imprimir;
+
 class Alumno {
   private static String nombre;
   private float promedio;
@@ -20,7 +22,7 @@ class Alumno {
 
   public void Desempenio(float promedio) {
     if (promedio >= 9.5 && promedio <= 10) {
-      Imprimir.Imprimir("%s: Excelente%n", Alumno.getNombre());
+      imprimir("%s: Excelente%n", Alumno.getNombre());
     } else if (promedio >= 8.4 && promedio <= 9.4) {
       //c.printf("%s: Muy bien%n", alumno.getNombre());
     } else if (promedio >= 7.5 && promedio <= 8.4) {

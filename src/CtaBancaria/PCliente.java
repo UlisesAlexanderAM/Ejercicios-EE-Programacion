@@ -15,9 +15,9 @@ public class PCliente {
      Cliente c1=new Cliente();
      Cliente c2=new Cliente();
      System.out.println("Dar nombre del Cliente1:");
-     c1.asignarNombre(Leer.datoString());
+     //c1.asignarNombre(Leer.datoString());
      System.out.println("Dar nombre del Cliente2:");
-     c2.asignarNombre(Leer.datoString());
+     //c2.asignarNombre(Leer.datoString());
      System.out.println("El nombre es:" + c1.obtenerNombre());
      System.out.println("El nombre es:" + c2.obtenerNombre());
   }

@@ -3,7 +3,7 @@ public class Principal
 {
   public static void main(String[] args)
   {
-       CCuenta arreglocta[]=new CCuenta[2];
+       CCuenta[] arreglocta =new CCuenta[2];
     CCuenta cuenta02 = new CCuenta();
     CCuenta cuenta01 = new CCuenta("Adolfo Rodriguez Parada", "Debito", 6000, 3.5);
       //Cliente arregloc[]= new Cliente[2];
@@ -15,7 +15,7 @@ public class Principal
 //                                    10000, 3.5);
 //    Cliente c=new Cliente();
     System.out.println("Dar nombre del Cliente:");
-    cuenta02.setNombre(Leer.datoString()); 
+    //cuenta02.setNombre(Leer.datoString());
 //    cuenta02.nombre=Leer.datoString();
 //    cuenta02.nombre=Leer.datoString();
 //    cuenta02.asignarCliente(c);
@@ -23,12 +23,12 @@ public class Principal
 //    //arregloc[0]=c;
 //    
     System.out.println("Dar cuenta del cliente:");
-    cuenta02.asignarCuenta(Leer.datoString());
+    //cuenta02.asignarCuenta(Leer.datoString());
     
     System.out.println("Dar tipo de interes de la cuenta:");
-    cuenta02.asignarTipoDeInteres(Leer.datoFloat());
+    //cuenta02.asignarTipoDeInteres(Leer.datoFloat());
     System.out.println("Cantidad a Depositar:");
-    cuenta02.ingreso(Leer.datoDouble());
+    //cuenta02.ingreso(Leer.datoDouble());
 //    
     arreglocta[0]=cuenta01;
     arreglocta[1]=cuenta02;
