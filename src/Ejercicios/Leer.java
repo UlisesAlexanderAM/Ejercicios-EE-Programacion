@@ -57,6 +57,13 @@ public class Leer {
             return parseInt(c.readLine(mensaje,args));
         }
     }
+    public static int leerEntero(){
+        if (c==null) {
+            return datoInt();
+        } else {
+            return parseInt(c.readLine());
+        }
+    }
     public static float leerFlotante(String mensaje,Object... args){
         if (c==null) {
             System.out.printf(mensaje,args);
