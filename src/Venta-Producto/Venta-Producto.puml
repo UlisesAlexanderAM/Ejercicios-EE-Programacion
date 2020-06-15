@@ -12,11 +12,13 @@ class Empresa{
     +agregarVenta()
     +buscarVenta()
     +eliminarVenta()
+    +modificarVenta()
 }
 class Venta{
     -integer idVenta
     -Inventario productos
     +Venta()
+    +agregarProducto()
 }
 class Producto{
     -integer idProducto
