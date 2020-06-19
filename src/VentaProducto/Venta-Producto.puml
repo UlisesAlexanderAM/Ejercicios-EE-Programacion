@@ -1,0 +1,54 @@
+@startuml
+
+
+VentaProducto.Empresa *-- VentaProducto.Venta
+VentaProducto.Empresa *-- VentaProducto.Inventario
+VentaProducto.Inventario o-- VentaProducto.Producto
+VentaProducto.Inventario -- VentaProducto.Venta
+
+class VentaProducto.Empresa{
+    -ArrayList <Venta> ventas
+    -Inventario inventario
+    +Empresa()
+    +agregarVenta()
+    +buscarVenta()
+    +eliminarVenta()
+    +modificarVenta()
+    +agregarProductoAInventario()
+}
+class VentaProducto.Venta{
+    -integer idVenta
+    -VentaProducto.Inventario productos
+    +VentaProducto.Venta()
+    +agregarProducto()
+    +setCantidadProducto()
+    +setIdProducto()
+    +setNombreProducto()
+    +getCantidadProducto()
+    +getIdProducto()
+    +getNombreProducto()
+}
+class VentaProducto.Producto{
+    -integer idProducto
+    -String nombreProducto
+    -integer cantidadProducto
+    +VentaProducto.Producto()
+    +setIdProducto()
+    +getIdProducto()
+    +setNombreProducto()
+    +getNombreProducto()
+    +setCantidadProducto()
+    +getCantidadProducto()
+}
+class VentaProducto.Inventario{
+    -ArrayList <VentaProducto.Producto> producto
+    +VentaProducto.Inventario()
+    +agregarProducto()
+    +eliminarProducto()
+    +buscarProducto()
+    +modificarCantidadProducto()
+}
+
+
+
+@enduml
