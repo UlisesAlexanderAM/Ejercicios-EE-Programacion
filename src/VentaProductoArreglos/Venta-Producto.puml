@@ -1,0 +1,54 @@
+@startuml
+
+
+Empresa *-- Venta
+Empresa *-- Inventario
+Inventario o-- Producto
+Inventario -- Venta
+
+class Empresa{
+    -Venta [] ventas
+    -Inventario inventario
+    +Empresa()
+    +agregarVenta()
+    +buscarVenta()
+    +eliminarVenta()
+    +modificarVenta()
+    +agregarProductoAInventario()
+}
+class Venta{
+    -integer idVenta
+    -Inventario productos
+    +Venta()
+    +agregarProducto()
+    +setCantidadProducto()
+    +setIdProducto()
+    +setNombreProducto()
+    +getCantidadProducto()
+    +getIdProducto()
+    +getNombreProducto()
+}
+class Producto{
+    -integer idProducto
+    -String nombreProducto
+    -integer cantidadProducto
+    +Producto()
+    +setIdProducto()
+    +getIdProducto()
+    +setNombreProducto()
+    +getNombreProducto()
+    +setCantidadProducto()
+    +getCantidadProducto()
+}
+class Inventario{
+    -Producto [] producto
+    +Inventario()
+    +agregarProducto()
+    +eliminarProducto()
+    +buscarProducto()
+    +modificarCantidadProducto()
+}
+
+
+
+@enduml
