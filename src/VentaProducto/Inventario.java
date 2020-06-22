@@ -6,18 +6,18 @@ import static Ejercicios.Imprimir.imprimir;
 import static Ejercicios.Leer.leerEntero;
 
 public class Inventario {
-    private ArrayList <Producto> productos = new ArrayList<>();
+    private final ArrayList <Producto> productos = new ArrayList<>();
 
     Inventario(){
     }
 
-    void agregarProducto(Producto producto){
+    public void agregarProducto(Producto producto){
         productos.add(producto);
     }
-    void eliminarProducto(Producto producto){
+    public void eliminarProducto(Producto producto){
         productos.remove(producto);
     }
-    boolean buscarProducto(String nombre){
+    public boolean buscarProducto(String nombre){
         for (Producto producto : productos) {
             if (producto.getNombreProducto().equals(nombre)) {
                 return true;
@@ -25,7 +25,7 @@ public class Inventario {
         }
         return false;
     }
-    int buscarIndiceProducto(String nombre){
+    public int buscarIndiceProducto(String nombre){
         int indice = 0;
         for (Producto producto : productos) {
             if (producto.getNombreProducto().equals(nombre)) {
@@ -36,14 +36,16 @@ public class Inventario {
         }
         return indice;
     }
-    void modificarCantidadProducto(Producto producto){
+    public void modificarCantidadProducto(Producto producto){
         int cantidad;
-        imprimir("La cantidad actual de "+producto.getNombreProducto()+
-                "es de:"+producto.getCantidadProducto());
-        cantidad=leerEntero("Ingrese la nueva cantidad del producto: ");
+        imprimir("%n%nLa cantidad actual de "+producto.getNombreProducto()+
+                " es de:"+producto.getCantidadProducto());
+        cantidad=leerEntero("%nIngrese la nueva cantidad del producto: ");
         producto.setCantidadProducto(cantidad);
+        imprimir("La nueva cantidad de "+producto.getNombreProducto()+
+                " es de: "+producto.getCantidadProducto());
     }
-    void modificarCantidadPorVenta(int indice,int cantidad){
+    public void modificarCantidadPorVenta(int indice,int cantidad){
         int cantidadActual,nuevaCantidad;
         cantidadActual=productos.get(indice).getCantidadProducto();
         nuevaCantidad=cantidadActual-cantidad;

@@ -4,55 +4,57 @@ import java.util.ArrayList;
 
 import static Ejercicios.Imprimir.imprimir;
 import static Ejercicios.Leer.leerCadena;
+import static Ejercicios.Leer.leerEntero;
 
 public class Venta {
-    private int idVenta,cantidadVendida, flag=0;
+    private int idVenta, flag=0;
     private Inventario productos;
-    private ArrayList <Producto> productosVentas = new ArrayList<>();
+    private final ArrayList <Producto> productosVenta = new ArrayList<>();
+    private ArrayList <Integer> cantidadVendida = new ArrayList<>();
 
-    Venta(){
+    Venta(Inventario productos){
+        this.productos = productos;
     }
-    Venta(int id){
+    Venta(int id,Inventario productos){
         idVenta=id;
+        this.productos = productos;
     }
-    void agregarProducto(){
+    public void agregarProducto(){
         String nombre;
         imprimir("Los productos en inventario son los siguientes: ");
         for (int i = 0; i < productos.getProductos().size(); i++) {
-            imprimir(productos.getProductos().get(i).getNombreProducto());
+            imprimir("%n"+productos.getProductos().get(i).getNombreProducto());
         }
-        while (flag!=0){
-            nombre=leerCadena("Ingrese el nombre producto a agregar: ");
+        while (flag==0){
+            nombre=leerCadena("%nIngrese el nombre producto a agregar: ");
             if (productos.buscarProducto(nombre)){
-                productosVentas.add(productos.getProductos().get(productos.buscarIndiceProducto(nombre)));
+                int indice,cantidad;
+                Producto producto;
+                indice=productos.buscarIndiceProducto(nombre);
+                producto=productos.getProductos().get(indice);
+                productosVenta.add(producto);
+                cantidad=leerEntero("%nIngrese la cantidad vendida de "+producto.getNombreProducto()+
+                        ": ");
+                cantidadVendida.add(cantidad);
             }else {
-                imprimir("Nombre no valido");
+                imprimir("%nNombre no valido");
                 flag=1;
             }
         }
-    }
-
-    public void setCantidadVendida(int cantidadVendida) {
-        this.cantidadVendida = cantidadVendida;
     }
 
     public void setIdVenta(int idVenta) {
         this.idVenta = idVenta;
     }
 
-    public void setProductos(Inventario productos) {
-        this.productos = productos;
-    }
-
-    public int getCantidadVendida() {
-        return cantidadVendida;
-    }
-
     public int getIdVenta() {
         return idVenta;
     }
 
-    public Inventario getProductos() {
-        return productos;
+    public void imprimirProductosVenta(){
+        for (Producto producto : productosVenta){
+            imprimir("%n"+producto.getNombreProducto()+
+                    ": "+producto.getCantidadProducto());
+        }
     }
 }
