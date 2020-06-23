@@ -96,11 +96,11 @@ public class Empresa {
     }
     public void agregarProductoAVentaEspecifica(){
         imprimirVentas();
-        int n = leerEntero("Ingrese el ID de la venta a la cual quiere agregar productos");
+        int n = leerEntero("%nIngrese el ID de la venta a la cual quiere agregar productos");
         if (buscarVentaPorID(n)==null) {
             do {
                 imprimir("ID invalido");
-                n = leerEntero("Ingrese el ID de la venta a la cual quiere agregar productos");
+                n = leerEntero("%nIngrese el ID de la venta a la cual quiere agregar productos");
             } while (buscarVentaPorID(n) == null);
         } else {
             buscarVentaPorID(n).agregarProducto();
