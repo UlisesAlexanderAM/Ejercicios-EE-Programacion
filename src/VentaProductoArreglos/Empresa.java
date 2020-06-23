@@ -1,29 +1,32 @@
 package VentaProductoArreglos;
 
-import java.util.ArrayList;
-
 import static Ejercicios.Imprimir.imprimir;
 import static Ejercicios.Leer.leerEntero;
 
 public class Empresa {
     private final Venta [] ventas = new Venta[10];
     private final Inventario inventario;
+    private int ulimaVentas=0;
 
     Empresa(){
         inventario = new Inventario();
         Venta venta1 = new Venta(1,inventario);
-        ventas.add(venta1);
+        ventas[ulimaVentas]=venta1;
+        ulimaVentas+=1;
     }
 
     public void agregarVenta(Venta venta){
-        ventas.add(venta);
+        ventas[ulimaVentas]=venta;
+        ulimaVentas+=1;
     }
 
     public void buscarVenta(Venta venta){
-        if (ventas.contains(venta)){
-            imprimir("Existe la venta");
-        } else {
-            imprimir("No existe la venta");
+        for (int i = 0; i < 10; i++) {
+            if (ventas[i]==venta) {
+                imprimir("Existe la venta");
+            } else {
+                imprimir("No existe la venta");
+            }
         }
     }
     public Venta buscarVentaPorID(int id){
@@ -35,7 +38,14 @@ public class Empresa {
         return null;
     }
     public void eliminarVenta(Venta venta){
-        ventas.remove(venta);
+        for (int i = 0; i < ulimaVentas; i++) {
+            if (ventas[i]==venta){
+                for (int j = 0; j < ulimaVentas-1; j++) {
+                    ventas[j]=ventas[j+1];
+                }
+                ventas[ulimaVentas]=null;
+            }
+        }
     }
 
     public void modificarVenta(Venta venta){
@@ -72,18 +82,16 @@ public class Empresa {
     }
 
     public void imprimirVentas(){
-        for (Venta venta :ventas){
-            imprimir("%nVenta ID: "+venta.getIdVenta());
-            venta.imprimirProductosVenta();
+        for (int i = 0; i < ulimaVentas; i++){
+            imprimir("%nVenta ID: "+ventas[i].getIdVenta());
+            ventas[i].imprimirProductosVenta();
         }
     }
     public void agregarProductosAVentasGenaral(){
-        for (Venta venta : ventas){
+        for (int i = 0; i < ulimaVentas; i++) {
             int n;
-            n=leerEntero("%n¿Cuantos producto desea agregar a la venta "+venta.getIdVenta()+"?: ");
-            for (int i = 0; i < n; i++) {
-                venta.agregarProducto();
-            }
+            n=leerEntero("%n¿Cuantos producto desea agregar a la venta "+ventas[i].getIdVenta()+"?: ");
+            ventas[i].agregarProducto(n);
         }
     }
     public void agregarProductoAVentaEspecifica(){

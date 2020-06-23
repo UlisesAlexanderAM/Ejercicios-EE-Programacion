@@ -1,15 +1,13 @@
 package VentaProductoArreglos;
 
-import java.util.ArrayList;
-
 import static Ejercicios.Imprimir.imprimir;
 import static Ejercicios.Leer.leerCadena;
 import static Ejercicios.Leer.leerEntero;
 
 public class Venta {
-    private int idVenta, flag=0;
+    private int idVenta, flag=0, ultimaProductosVenta=0,ultimaCantidadVendida=0;
     private Inventario productos;
-    private final Producto [] productosVenta = new Producto[10];
+    private Producto [] productosVenta = new Producto[10];
     private int[] cantidadVendida = new int[10];
 
     Venta(Inventario productos){
@@ -18,27 +16,63 @@ public class Venta {
     Venta(int id, Inventario productos){
         idVenta=id;
         this.productos = productos;
-    }
-    public void agregarProducto(){
-        String nombre;
-        imprimir("Los productos en inventario son los siguientes: ");
-        for (int i = 0; i < productos.getProductos().size(); i++) {
-            imprimir("%n"+productos.getProductos().get(i).getNombreProducto());
+        for (int i = 0; i < 10; i++) {
+            productosVenta[i]=null;
+            cantidadVendida[i]=0;
         }
-        while (flag==0){
+    }
+    public void agregarProducto(int n){
+        String nombre;
+        int flag2=0;
+        imprimir("Los productos en inventario son los siguientes: ");
+        for (int i = 0; i < productos.getUltima(); i++) {
+            imprimir("%n"+productos.getProductos()[i].getNombreProducto());
+        }
+        while (flag2<n){
             nombre=leerCadena("%nIngrese el nombre producto a agregar: ");
             if (productos.buscarProducto(nombre)){
                 int indice,cantidad;
                 Producto producto;
                 indice=productos.buscarIndiceProducto(nombre);
-                producto=productos.getProductos().get(indice);
-                productosVenta.add(producto);
+                producto=productos.getProductos()[indice];
+                productosVenta[ultimaProductosVenta]=producto;
+                ultimaProductosVenta+=1;
                 cantidad=leerEntero("%nIngrese la cantidad vendida de "+producto.getNombreProducto()+
                         ": ");
-                cantidadVendida.add(cantidad);
+                cantidadVendida[ultimaCantidadVendida]=cantidad;
+                ultimaCantidadVendida+=1;
+                flag2+=1;
             }else {
                 imprimir("%nNombre no valido");
-                flag=1;
+            }
+        }
+    }
+    public void agregarProducto(){
+        String nombre;
+        int n;
+        imprimir("Los productos en inventario son los siguientes: ");
+        for (int i = 0; i < productos.getUltima(); i++) {
+            imprimir("%n"+productos.getProductos()[i].getNombreProducto());
+        }
+        n=leerEntero("%n¿Cuantos producto desea agregar a la venta?: ");
+        for (int i = 0; i < n; i++) {
+            while (flag == 0) {
+                nombre = leerCadena("%nIngrese el nombre producto a agregar: ");
+                if (productos.buscarProducto(nombre)) {
+                    int indice, cantidad;
+                    Producto producto;
+                    indice = productos.buscarIndiceProducto(nombre);
+                    producto = productos.getProductos()[indice];
+                    productosVenta[ultimaProductosVenta] = producto;
+                    ultimaProductosVenta += 1;
+                    cantidad = leerEntero("%nIngrese la cantidad vendida de " + producto.getNombreProducto() +
+                            ": ");
+                    cantidadVendida[ultimaCantidadVendida] = cantidad;
+                    ultimaCantidadVendida += 1;
+                    flag+=1;
+                } else {
+                    imprimir("%nNombre no valido");
+                }
             }
         }
     }
@@ -52,9 +86,9 @@ public class Venta {
     }
 
     public void imprimirProductosVenta(){
-        for (Producto producto : productosVenta){
-            imprimir("%n"+producto.getNombreProducto()+
-                    ": "+producto.getCantidadProducto());
+        for (int i = 0; i < ultimaProductosVenta; i++) {
+            imprimir("%n"+productosVenta[i].getNombreProducto()+
+                    ": "+productosVenta[i].getCantidadProducto());
         }
     }
 }
