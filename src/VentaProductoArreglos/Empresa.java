@@ -40,7 +40,7 @@ public class Empresa {
     public void eliminarVenta(Venta venta){
         for (int i = 0; i < ulimaVentas; i++) {
             if (ventas[i]==venta){
-                for (int j = 0; j < ulimaVentas-1; j++) {
+                for (int j = i; j < ulimaVentas-1; j++) {
                     ventas[j]=ventas[j+1];
                 }
                 ventas[ulimaVentas]=null;
@@ -86,6 +86,7 @@ public class Empresa {
             imprimir("%nVenta ID: "+ventas[i].getIdVenta());
             ventas[i].imprimirProductosVenta();
         }
+        imprimir("%n");
     }
     public void agregarProductosAVentasGenaral(){
         for (int i = 0; i < ulimaVentas; i++) {
@@ -96,11 +97,11 @@ public class Empresa {
     }
     public void agregarProductoAVentaEspecifica(){
         imprimirVentas();
-        int n = leerEntero("%nIngrese el ID de la venta a la cual quiere agregar productos");
+        int n = leerEntero("%nIngrese el ID de la venta a la cual quiere agregar productos: ");
         if (buscarVentaPorID(n)==null) {
             do {
                 imprimir("ID invalido");
-                n = leerEntero("%nIngrese el ID de la venta a la cual quiere agregar productos");
+                n = leerEntero("%nIngrese el ID de la venta a la cual quiere agregar productos: ");
             } while (buscarVentaPorID(n) == null);
         } else {
             buscarVentaPorID(n).agregarProducto();

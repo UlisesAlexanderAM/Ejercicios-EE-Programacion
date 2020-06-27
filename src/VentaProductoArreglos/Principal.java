@@ -25,5 +25,7 @@ public class Principal {
         empresa1.agregarVenta(venta3);
         empresa1.agregarProductoAVentaEspecifica();
         empresa1.imprimirVentas();
+        empresa1.eliminarVenta(venta2);
+        empresa1.imprimirVentas();
     }
 }
