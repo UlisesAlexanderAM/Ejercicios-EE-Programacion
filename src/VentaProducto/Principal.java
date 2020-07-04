@@ -26,6 +26,7 @@ public class Principal {
         empresa1.imprimirVentas();
         empresa1.eliminarVenta(venta2);
         empresa1.imprimirVentas();
+        empresa1.buscarVenta(venta3);
         empresa1.modificarVenta(venta3);
         empresa1.imprimirVentas();
         empresa1.imprimirInventario();

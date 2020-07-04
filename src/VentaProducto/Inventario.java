@@ -14,21 +14,18 @@ public class Inventario {
 
     public void agregarProducto(Producto producto){
         if (buscarProducto(producto.getNombreProducto())){
-            String nombre=leerCadena(producto.getNombreProducto()+" ya existe, ingrese" +
+            String nombre=leerCadena("%n"+producto.getNombreProducto()+" ya existe, ingrese" +
                     "un nuevo nombre para el producto: ");
             producto.setNombreProducto(nombre);
             agregarProducto(producto);
         }else if(buscarProductoPorId(producto.getIdProducto())){
-            int id = leerEntero("Ya existe un producto con el ID "+producto.getIdProducto()+
+            int id = leerEntero("%nYa existe un producto con el ID "+producto.getIdProducto()+
                     " ingrese un nuevo ID: ");
             producto.setIdProducto(id);
             agregarProducto(producto);
         }else {
             productos.add(producto);
         }
-    }
-    public void eliminarProducto(Producto producto){
-        productos.remove(producto);
     }
     public boolean buscarProducto(String nombre){
         for (Producto producto : productos) {

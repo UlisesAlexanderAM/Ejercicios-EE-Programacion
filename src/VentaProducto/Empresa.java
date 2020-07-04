@@ -21,9 +21,9 @@ public class Empresa {
 
     public void buscarVenta(Venta venta){
         if (ventas.contains(venta)){
-            imprimir("Existe la venta");
+            imprimir("%nExiste la venta");
         } else {
-            imprimir("No existe la venta");
+            imprimir("%nNo existe la venta");
         }
     }
     public Venta buscarVentaPorID(int id){
@@ -102,5 +102,4 @@ public class Empresa {
             }
         }
     }
-
 }
