@@ -5,12 +5,11 @@ public class Principal {
         Empresa empresa1 = new Empresa();
         Producto lapices =new Producto(1,"lapices");
         Producto gomas = new Producto(2,"gomas");
-        Producto x1 = new Producto();
-        Producto x2 = new Producto();
-
         empresa1.agregarProductoAInventario(lapices);
         empresa1.agregarProductoAInventario(gomas);
+        Producto x1 = new Producto();
         empresa1.agregarProductoAInventario(x1);
+        Producto x2 = new Producto();
         empresa1.agregarProductoAInventario(x2);
         empresa1.imprimirInventario();
         empresa1.buscarProductoPorNombre("hola");
@@ -25,5 +24,10 @@ public class Principal {
         empresa1.agregarVenta(venta3);
         empresa1.agregarProductoAVentaEspecifica();
         empresa1.imprimirVentas();
+        empresa1.eliminarVenta(venta2);
+        empresa1.imprimirVentas();
+        empresa1.modificarVenta(venta3);
+        empresa1.imprimirVentas();
+        empresa1.imprimirInventario();
     }
 }

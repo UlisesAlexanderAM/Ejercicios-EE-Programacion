@@ -36,6 +36,7 @@ public class Venta {
                 cantidad=leerEntero("%nIngrese la cantidad vendida de "+producto.getNombreProducto()+
                         ": ");
                 cantidadVendida.add(cantidad);
+                productos.modificarCantidadPorVenta(indice,cantidad);
             }else {
                 imprimir("%nNombre no valido");
                 flag=1;

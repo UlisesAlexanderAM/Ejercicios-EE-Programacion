@@ -3,6 +3,7 @@ package VentaProducto;
 import java.util.ArrayList;
 
 import static Ejercicios.Imprimir.imprimir;
+import static Ejercicios.Leer.leerCadena;
 import static Ejercicios.Leer.leerEntero;
 
 public class Inventario {
@@ -12,7 +13,19 @@ public class Inventario {
     }
 
     public void agregarProducto(Producto producto){
-        productos.add(producto);
+        if (buscarProducto(producto.getNombreProducto())){
+            String nombre=leerCadena(producto.getNombreProducto()+" ya existe, ingrese" +
+                    "un nuevo nombre para el producto: ");
+            producto.setNombreProducto(nombre);
+            agregarProducto(producto);
+        }else if(buscarProductoPorId(producto.getIdProducto())){
+            int id = leerEntero("Ya existe un producto con el ID "+producto.getIdProducto()+
+                    " ingrese un nuevo ID: ");
+            producto.setIdProducto(id);
+            agregarProducto(producto);
+        }else {
+            productos.add(producto);
+        }
     }
     public void eliminarProducto(Producto producto){
         productos.remove(producto);
@@ -20,6 +33,14 @@ public class Inventario {
     public boolean buscarProducto(String nombre){
         for (Producto producto : productos) {
             if (producto.getNombreProducto().equals(nombre)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean buscarProductoPorId(int id){
+        for (Producto producto : productos){
+            if (producto.getIdProducto()==id){
                 return true;
             }
         }
@@ -57,7 +78,7 @@ public class Inventario {
     }
     public void imprimirInventario(){
         for (Producto producto : productos){
-            imprimir(producto.getNombreProducto()+"%n");
+            imprimir("%n"+producto.getNombreProducto()+": "+producto.getCantidadProducto()+"%n");
         }
     }
 }

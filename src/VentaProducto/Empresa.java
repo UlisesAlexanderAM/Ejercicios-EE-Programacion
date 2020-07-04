@@ -58,9 +58,9 @@ public class Empresa {
     }
     public void buscarProductoPorNombre(String nombre){
         if (inventario.buscarProducto(nombre)){
-            imprimir("El producto "+nombre+" existe");
+            imprimir("%nEl producto "+nombre+" existe");
         }else {
-            imprimir("El producto "+nombre+" no existe");
+            imprimir("%nEl producto "+nombre+" no existe");
         }
     }
     public void modificarCantidadProducto(Producto producto){
@@ -80,7 +80,7 @@ public class Empresa {
     public void agregarProductosAVentasGenaral(){
         for (Venta venta : ventas){
             int n;
-            n=leerEntero("%n¿Cuantos producto desea agregar a la venta "+venta.getIdVenta()+"?: ");
+            n=leerEntero("%n%n¿Cuantos productos desea agregar a la venta "+venta.getIdVenta()+"?: ");
             for (int i = 0; i < n; i++) {
                 venta.agregarProducto();
             }
@@ -88,14 +88,18 @@ public class Empresa {
     }
     public void agregarProductoAVentaEspecifica(){
         imprimirVentas();
-        int n = leerEntero("Ingrese el ID de la venta a la cual quiere agregar productos");
+        int n = leerEntero("%nIngrese el ID de la venta a la cual quiere agregar productos");
         if (buscarVentaPorID(n)==null) {
             do {
-                imprimir("ID invalido");
-                n = leerEntero("Ingrese el ID de la venta a la cual quiere agregar productos");
+                imprimir("%nID invalido");
+                n = leerEntero("%nIngrese el ID de la venta a la cual quiere agregar productos");
             } while (buscarVentaPorID(n) == null);
         } else {
-            buscarVentaPorID(n).agregarProducto();
+            int m;
+            m=leerEntero("%n%n¿Cuantos productos desea agregar a la venta "+buscarVentaPorID(n).getIdVenta()+"?: ");
+            for (int i = 0; i < m; i++) {
+                buscarVentaPorID(n).agregarProducto();
+            }
         }
     }
 
